@@ -7,8 +7,8 @@ Technologies used:
 - Fast API
 - Sqlachemy
 - Alembic
-- Postgres
 - Uvicorn 
+- Postgres
 - Docker
 
 ### Running
