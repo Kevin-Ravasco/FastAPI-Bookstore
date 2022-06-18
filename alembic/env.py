@@ -10,14 +10,6 @@ from alembic import context
 
 import models
 
-# Get our database connection from the environment variables
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(os.path.join(BASE_DIR, '.env'))
-sys.path.append(BASE_DIR)
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-print('DATABASE_URL:', DATABASE_URL)
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
