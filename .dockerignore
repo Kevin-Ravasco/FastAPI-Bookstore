@@ -6,7 +6,6 @@ __pycache__
 .pytest_cache
 htmlcov
 dist
-site
 .coverage
 coverage.xml
 Pipfile.lock
@@ -18,6 +17,5 @@ archive.zip
 # vim temporary files
 *~
 .*.sw?
-/.idea/vcs.xml
 /.env
 /.gitignore
