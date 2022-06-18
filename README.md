@@ -30,6 +30,5 @@ directory called alembic by running:
 To run migrations in the docker container, run:
 ```docker-compose run app alembic revision --autogenerate -m "New Migration" ```
 
-docker-compose run app 
-
-alembic upgrade head
+Take alembic migrations and migrate to database:
+```docker-compose run app alembic upgrade head```
