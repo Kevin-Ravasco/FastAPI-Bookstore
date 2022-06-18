@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
 
@@ -27,7 +27,7 @@ services:
   app:
     container_name: app
     build: .
-    command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: bash -c "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - .:/app
     ports:
