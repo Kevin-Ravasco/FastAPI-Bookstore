@@ -55,3 +55,30 @@ async def get_author(author_id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Author not found")
     return author
 
+
+@app.put('/book/{book_id}/', response_model=BookSchema)
+async def update_book(book_id: int, book: BookSchema):
+    """Updates a book by id"""
+    db_book = db.session.query(Book).get(book_id)
+    if not db_book:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
+    db_book.title = book.title
+    db_book.description = book.description
+    db_book.rating = book.rating
+    db_book.author_id = book.author_id
+    db.session.commit()
+    return db_book
+
+
+@app.put('/author/{author_id}/', response_model=AuthorSchema)
+async def update_author(author_id: int, author: AuthorSchema):
+    """Updates an author by id"""
+    db_author = db.session.query(Author).get(author_id)
+    if not db_author:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Author not found")
+    db_author.name = author.name
+    db_author.email = author.email
+    db_author.bio = author.bio
+    db.session.commit()
+    return author
+
