@@ -1,9 +1,9 @@
-from fastapi import status, HTTPException, Response
+from fastapi import status, HTTPException
 from fastapi_sqlalchemy import db
 
 from settings import app
-from models import Book, Author
-from schema import BookSchema, AuthorSchema
+from .models import Book, Author
+from .schema import BookSchema, AuthorSchema
 
 
 @app.get('/')
