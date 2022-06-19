@@ -82,3 +82,24 @@ async def update_author(author_id: int, author: AuthorSchema):
     db.session.commit()
     return author
 
+
+@app.delete('/book/{book_id}/', status_code=status.HTTP_204_NO_CONTENT)
+async def delete_book(book_id: int):
+    """Deletes a book by id"""
+    db_book = db.session.query(Book).get(book_id)
+    if not db_book:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
+    db.session.delete(db_book)
+    db.session.commit()
+    return
+
+
+@app.delete('author/{author_id}/', status_code=status.HTTP_204_NO_CONTENT)
+async def delete_author(author_id: int):
+    """Deletes an author by id"""
+    db_author = db.session.query(Author).get(author_id)
+    if not db_author:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Author not found")
+    db.session.delete(db_author)
+    db.session.commit()
+    return
