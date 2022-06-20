@@ -28,4 +28,3 @@ class Book(Base):
     time_updated = Column(DateTime(timezone=True), onupdate=func.now())
 
     author = relationship('Author', backref='books')
-
