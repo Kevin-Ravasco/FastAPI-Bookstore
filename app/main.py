@@ -113,3 +113,13 @@ async def get_author_books(author_id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Author not found")
     # author_books = db.session.query(Book).filter(Book.author_id == author_id).all()
     return author.books
+
+
+@app.get('/books/top-rated/')
+async def get_top_rated_books():
+    """
+    Returns books with a rating greater than 4
+    :return Book:
+    """
+    top_books = db.session.query(Book).filter(Book.rating >= 4).all()
+    return top_books
