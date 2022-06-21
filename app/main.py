@@ -103,3 +103,13 @@ async def delete_author(author_id: int):
     db.session.delete(db_author)
     db.session.commit()
     return
+
+
+@app.get('/author/{author_id}/books/')
+async def get_author_books(author_id: int):
+    """Returns all the books by an author"""
+    author = db.session.query(Author).get(author_id)
+    if not author:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Author not found")
+    # author_books = db.session.query(Book).filter(Book.author_id == author_id).all()
+    return author.books
