@@ -118,7 +118,7 @@ async def get_author_books(author_id: int):
 @app.get('/books/top-rated/')
 async def get_top_rated_books():
     """
-    Returns books with a rating greater than 4
+    Returns books with a rating greater than or equal to 4
     :return Book:
     """
     top_books = db.session.query(Book).filter(Book.rating >= 4).all()
